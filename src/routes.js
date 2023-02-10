@@ -120,4 +120,5 @@ routes.put("/dirigente/:id", async (req, res) => {
     })
   }
 })
+
 module.exports = routes; 
