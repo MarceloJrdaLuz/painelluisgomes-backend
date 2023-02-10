@@ -20,9 +20,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+
+app.use(
+  "/files",
+  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
+);
+
+app.use(require("./src/routes"));
+
 app.use(function(req, res, next) {
   var allowedOrigins = [
-    "https://luisgomesrn.vercel.app"
+    "ttps://luisgomesrn.vercel.app/"
   ];
   var origin = req.headers.origin;
   console.log(origin)
@@ -52,12 +60,5 @@ app.use(function(req, res, next) {
   
   // Pass to next layer of middleware
   next();})
-
-app.use(
-  "/files",
-  express.static(path.resolve(__dirname, "..", "tmp", "uploads"))
-);
-
-app.use(require("./src/routes"));
 
 app.listen(process.env.PORT || 3000);
