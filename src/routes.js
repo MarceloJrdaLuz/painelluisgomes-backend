@@ -4,6 +4,7 @@ const multerConfig = require("./config/multer");
 const Post = require("./models/post");
 const Dirigente = require("./models/dirigenteGrupo")
 
+
 routes.get("/posts", async (req, res) => {
   const posts = await Post.find();
 
